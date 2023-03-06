@@ -1,22 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { FilePond, registerPlugin } from 'react-filepond'
-// import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation'
-// import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
 import { Cloudinary } from '@cloudinary/url-gen'
 import { blur } from '@cloudinary/url-gen/actions/effect'
 
-// import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
-// import 'filepond/dist/filepond.min.css'
-
-import {
-  blurImage,
-  makeDeleteRequest,
-  makeUploadRequest
-} from './cloudinary/cloudinaryHelper'
-
-// registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
-
-// const baseUrl = `https://api.cloudinary.com/v1_1/${cloudName}`
+import { useUpload } from './cloudinary/cloudinaryHelper'
+import { ImagesContext } from './context/images'
+import { useCelebrities } from './hooks/useCelebrities'
 
 const cld = new Cloudinary({
   cloud: {
@@ -27,17 +16,15 @@ const cld = new Cloudinary({
   }
 })
 
+// const celebrity_url = cld.image('vdfhqv6mvmfmfavpnmze')
+const celebrity_url = 'https://res.cloudinary.com/dze60m7yr/image/upload/v1678061752/vdfhqv6mvmfmfavpnmze.webp'
+
 function App () {
+  console.log('App')
+
   const [files, setFiles] = useState([])
-
-  //   if (files.length > 0) console.log(files[0].serverId)
-  console.log(files[0]?.serverId)
-  console.log(files[0]?.filename)
-  console.log(files)
-
-  //   useEffect(() => {
-  //     first
-  //   }, [files])
+  const { makeUploadRequest, makeDeleteRequest } = useUpload()
+  const { celebrity } = useContext(ImagesContext)
 
   const revert = (token, successCallback, errorCallback) => {
     makeDeleteRequest({
@@ -87,10 +74,19 @@ function App () {
           labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
         />
       </div>
-      {/* <div>
-        {files[0]?.serverId &&
-          <img src={blurImage(files[0].serverId)} alt='or' />}
-      </div> */}
+      <div>
+        {/* {
+          userURL &&
+            <img src={userURL} alt='sdafjhs' />
+        }
+        {
+          celebrityURL &&
+            <img src={celebrityURL} alt='ennove' />
+        } */}
+        {celebrity?.celebrityURL && <img src={celebrity.celebrityURL} alt='ennove' />}
+        {celebrity?.name && <p>{celebrity.name}</p>}
+        {celebrity?.net_worth && <p>{celebrity.net_worth}</p>}
+      </div>
     </>
   )
 }
