@@ -5,7 +5,7 @@ import { useUpload } from './cloudinary/cloudinaryHelper'
 import { CelebrityList } from './components/CelebrityList'
 
 import './App.css'
-import { Sample } from './components/Sample'
+import { Samples } from './components/Samples'
 
 function App () {
   console.log('App')
@@ -61,7 +61,7 @@ function App () {
           labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
         />
       </div>
-      {/* <Sample /> */}
+      <Samples />
       <CelebrityList />
     </div>
   )
