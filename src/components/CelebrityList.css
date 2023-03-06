@@ -1,9 +1,13 @@
+h2 {
+    margin-top: 96px;
+}
+
 .cards {
     display: flex;
     gap: 32px;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 96px;
+    margin-top: 32px;
     padding: 0 96px;
     /* width: 80%; */
     /* background-color: antiquewhite; */

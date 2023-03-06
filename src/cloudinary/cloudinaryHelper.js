@@ -35,13 +35,13 @@ export const useUpload = () => {
     formData.append(fieldName, file)
     formData.append('upload_preset', uploadPreset)
     formData.append('api_key', apiKey)
-    // formData.append('detection', 'aws_rek_face')
+    formData.append('detection', 'aws_rek_face')
 
     const timestamp = Date.now() / 1000
     formData.append('timestamp', timestamp)
 
-    // const stringToSign = `detection=aws_rek_face&timestamp=${timestamp}&upload_preset=asnf0nj6${apiSecret}`
-    const stringToSign = `timestamp=${timestamp}&upload_preset=asnf0nj6${apiSecret}`
+    const stringToSign = `detection=aws_rek_face&timestamp=${timestamp}&upload_preset=asnf0nj6${apiSecret}`
+    // const stringToSign = `timestamp=${timestamp}&upload_preset=asnf0nj6${apiSecret}`
     const signature = Rusha.createHash().update(stringToSign).digest('hex')
     formData.append('signature', signature)
 
@@ -56,32 +56,42 @@ export const useUpload = () => {
       if (request.status >= 200 && request.status < 300) {
         const {
           delete_token: deleteToken,
-          public_id: publicId
+          public_id: publicId,
           // secure_url: celebrityURL,
-          // info
+          info,
+          width: originalWidth,
+          height: originalHeight
         } = JSON.parse(request.response)
-        // console.log(request.response)
+        console.log(request.response)
 
-        const name = 'david tennant'
-        const emotion = 'HAPPY'
+        // const name = 'david tennant'
+        // const emotion = 'HAPPY'
+        const celebrityFaces = info.detection.aws_rek_face.data.celebrity_faces
 
-        const celebrityURL = makeTransformations({ publicId, name, emotion })
+        celebrityFaces.forEach(face => {
+          const name = face.name
+          const emotion = face.face.emotions[0] // emotions are already sorted by confidence
+          const boundingBox = face.face.bounding_box
+          const celebrityURL = makeTransformations({ publicId, originalWidth, originalHeight, boundingBox, name, emotion })
 
-        // setCelebrity((oldCelebrity) => ({
-        //   ...oldCelebrity,
-        //   celebrityURL
-        // }))
+          const moreDataURL = face.urls[0]
 
-        // const celebrityFaces = info.detection.aws_rek_face.data.celebrity_faces
+          searchCelebrity({ name })
+            .then((newCelebrityDetails) => setCelebrities((oldCelebrity) => (
+              [...oldCelebrity, { celebrityURL, moreDataURL, ...newCelebrityDetails }]
+            )))
+        })
+
+        // si non reconoce ningunha cara estaria ben setear un error
+
         // const name = (celebrityFaces.length > 0) ? celebrityFaces[0].name : ''
-        searchCelebrity({ name })
-          .then((newCelebrityDetails) => setCelebrities((oldCelebrity) => (
-            [...oldCelebrity, { celebrityURL, ...newCelebrityDetails }]
-          )))
-        // refreshCelebrityDetails({ name })
 
-        // const newCelebrityURL = blurImage({ publicId, strength: 600 })
-        // setCelebrityURL(newCelebrityURL)
+        // const celebrityURL = makeTransformations({ publicId, name, emotion })
+
+        // searchCelebrity({ name })
+        //   .then((newCelebrityDetails) => setCelebrities((oldCelebrity) => (
+        //     [...oldCelebrity, { celebrityURL, ...newCelebrityDetails }]
+        //   )))
 
         successCallback(deleteToken)
       } else {
