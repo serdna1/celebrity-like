@@ -2,6 +2,8 @@
 
 In this React app you upload an image with celebrities in it and the app recognizes them if any
 
+![app screenshot (testing a Donald Trump photo)](https://res.cloudinary.com/dze60m7yr/image/upload/v1678138957/Screenshot_157_iawnt6.png)
+
 ## Features
 - Name of the celebrity (overlayed over the response image)
 - Emotion of the celebrity (one of eight) via a overlayed emoji
