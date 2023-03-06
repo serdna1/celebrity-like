@@ -3,12 +3,12 @@ import { useState, createContext } from 'react'
 export const ImagesContext = createContext()
 
 export const ImagesProvider = ({ children }) => {
-  const [celebrity, setCelebrity] = useState(null)
+  const [celebrities, setCelebrities] = useState([])
 
   return (
     <ImagesContext.Provider value={{
-      celebrity,
-      setCelebrity
+      celebrities,
+      setCelebrities
     }}
     >
       {children}

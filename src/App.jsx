@@ -1,31 +1,17 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { FilePond, registerPlugin } from 'react-filepond'
-import { Cloudinary } from '@cloudinary/url-gen'
-import { blur } from '@cloudinary/url-gen/actions/effect'
+import { useState } from 'react'
+import { FilePond } from 'react-filepond'
 
 import { useUpload } from './cloudinary/cloudinaryHelper'
-import { ImagesContext } from './context/images'
-import { useCelebrities } from './hooks/useCelebrities'
-import { CelebrityCard } from './components/CelebrityCard'
+import { CelebrityList } from './components/CelebrityList'
 
-const cld = new Cloudinary({
-  cloud: {
-    cloudName: 'dze60m7yr'
-  },
-  url: {
-    secure: true
-  }
-})
-
-// const celebrity_url = cld.image('vdfhqv6mvmfmfavpnmze')
-const celebrity_url = 'https://res.cloudinary.com/dze60m7yr/image/upload/v1678061752/vdfhqv6mvmfmfavpnmze.webp'
+import './App.css'
+import { Sample } from './components/Sample'
 
 function App () {
   console.log('App')
 
   const [files, setFiles] = useState([])
   const { makeUploadRequest, makeDeleteRequest } = useUpload()
-  const { celebrity } = useContext(ImagesContext)
 
   const revert = (token, successCallback, errorCallback) => {
     makeDeleteRequest({
@@ -63,8 +49,8 @@ function App () {
   }
 
   return (
-    <>
-      <div style={{ width: '80%', margin: 'auto', padding: '1%' }}>
+    <div className='page'>
+      <div style={{ width: '80%', padding: '1%' }}>
         <FilePond
           files={files}
           acceptedFileTypes='image/*'
@@ -75,16 +61,10 @@ function App () {
           labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
         />
       </div>
-      {/* <div>
-        {celebrity?.celebrityURL && <img src={celebrity.celebrityURL} alt='ennove' />}
-        {celebrity?.name && <p>{celebrity.name}</p>}
-        {celebrity?.net_worth && <p>{celebrity.net_worth}</p>}
-      </div> */}
-      {
-        celebrity &&
-          <CelebrityCard url={celebrity?.celebrityURL} occupation={celebrity?.occupation} />
-      }
-    </>
+      {/* <Sample /> */}
+      <CelebrityList />
+    </div>
   )
 }
+
 export default App

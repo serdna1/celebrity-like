@@ -12,15 +12,15 @@ const baseUrl = `https://api.cloudinary.com/v1_1/${cloudName}`
 export const useUpload = () => {
   console.log('useUpload')
 
-  const { setCelebrity } = useContext(ImagesContext)
+  const { setCelebrities } = useContext(ImagesContext)
 
-  const refreshCelebrityDetails = ({ name }) => {
-    searchCelebrity({ name })
-      .then((newCelebrityDetails) => setCelebrity((oldCelebrity) => ({
-        ...oldCelebrity,
-        ...newCelebrityDetails
-      })))
-  }
+  // const refreshCelebrityDetails = ({ name }) => {
+  //   searchCelebrity({ name })
+  //     .then((newCelebrityDetails) => setCelebrity((oldCelebrity) => ({
+  //       ...oldCelebrity,
+  //       ...newCelebrityDetails
+  //     })))
+  // }
 
   const makeUploadRequest = ({
     file,
@@ -67,14 +67,18 @@ export const useUpload = () => {
 
         const celebrityURL = makeTransformations({ publicId, name, emotion })
 
-        setCelebrity((oldCelebrity) => ({
-          ...oldCelebrity,
-          celebrityURL
-        }))
+        // setCelebrity((oldCelebrity) => ({
+        //   ...oldCelebrity,
+        //   celebrityURL
+        // }))
 
         // const celebrityFaces = info.detection.aws_rek_face.data.celebrity_faces
         // const name = (celebrityFaces.length > 0) ? celebrityFaces[0].name : ''
-        refreshCelebrityDetails({ name })
+        searchCelebrity({ name })
+          .then((newCelebrityDetails) => setCelebrities((oldCelebrity) => (
+            [...oldCelebrity, { celebrityURL, ...newCelebrityDetails }]
+          )))
+        // refreshCelebrityDetails({ name })
 
         // const newCelebrityURL = blurImage({ publicId, strength: 600 })
         // setCelebrityURL(newCelebrityURL)
