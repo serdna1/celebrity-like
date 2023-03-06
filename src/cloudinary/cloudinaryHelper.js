@@ -70,9 +70,9 @@ export const useUpload = () => {
 
         celebrityFaces.forEach(face => {
           const name = face.name
-          const emotion = face.face.emotions[0] // emotions are already sorted by confidence
+          const emotionType = face.face.emotions[0].type // emotions are already sorted by confidence
           const boundingBox = face.face.bounding_box
-          const celebrityURL = makeTransformations({ publicId, originalWidth, originalHeight, boundingBox, name, emotion })
+          const celebrityURL = makeTransformations({ publicId, originalWidth, originalHeight, boundingBox, name, emotionType })
 
           const moreDataURL = face.urls[0]
 
