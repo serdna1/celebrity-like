@@ -6,6 +6,7 @@ import { blur } from '@cloudinary/url-gen/actions/effect'
 import { useUpload } from './cloudinary/cloudinaryHelper'
 import { ImagesContext } from './context/images'
 import { useCelebrities } from './hooks/useCelebrities'
+import { CelebrityCard } from './components/CelebrityCard'
 
 const cld = new Cloudinary({
   cloud: {
@@ -74,19 +75,15 @@ function App () {
           labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
         />
       </div>
-      <div>
-        {/* {
-          userURL &&
-            <img src={userURL} alt='sdafjhs' />
-        }
-        {
-          celebrityURL &&
-            <img src={celebrityURL} alt='ennove' />
-        } */}
+      {/* <div>
         {celebrity?.celebrityURL && <img src={celebrity.celebrityURL} alt='ennove' />}
         {celebrity?.name && <p>{celebrity.name}</p>}
         {celebrity?.net_worth && <p>{celebrity.net_worth}</p>}
-      </div>
+      </div> */}
+      {
+        celebrity &&
+          <CelebrityCard url={celebrity?.celebrityURL} occupation={celebrity?.occupation} />
+      }
     </>
   )
 }
