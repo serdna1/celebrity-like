@@ -1,17 +1,17 @@
 import { useState, createContext } from 'react'
 
-export const ImagesContext = createContext()
+export const CelebritiesContext = createContext()
 
-export const ImagesProvider = ({ children }) => {
+export const CelebritiesProvider = ({ children }) => {
   const [celebrities, setCelebrities] = useState([])
 
   return (
-    <ImagesContext.Provider value={{
+    <CelebritiesContext.Provider value={{
       celebrities,
       setCelebrities
     }}
     >
       {children}
-    </ImagesContext.Provider>
+    </CelebritiesContext.Provider>
   )
 }

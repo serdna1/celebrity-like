@@ -32,7 +32,7 @@ const emotionsToPublicID = ({ emotionType }) => {
   return 'happy-emoji_d0bixy' // return happy by default
 }
 
-// rezize to 600x600, crop to 300x300 focusing on face,
+// crop to adjust to the face boundaries, scale with to 300 and height to auto
 // overlay of name, overlay of an emoji relative to the emotion,
 // formatting to .webp and set the quality to auto low
 export const makeTransformations = ({ publicId, originalWidth, originalHeight, boundingBox, name, emotionType }) => {
@@ -81,5 +81,3 @@ export const makeTransformations = ({ publicId, originalWidth, originalHeight, b
 
   return imageOverlay.toURL()
 }
-
-// https://res.cloudinary.com/demo/image/upload/x_385,y_90,w_300,h_250,c_crop/kitten.jpg

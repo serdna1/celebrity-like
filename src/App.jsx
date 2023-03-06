@@ -1,27 +1,29 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { FilePond } from 'react-filepond'
 
-import { useUpload } from './cloudinary/cloudinaryHelper'
-import { CelebrityList } from './components/CelebrityList'
+import 'filepond/dist/filepond.min.css'
 
-import './App.css'
+import { useUpload } from './hooks/useUpload'
+import { CelebrityList } from './components/CelebrityList'
 import { Samples } from './components/Samples'
 
-function App () {
-  console.log('App')
+import './App.css'
+import { Header } from './components/Header'
+import { Footer } from './components/Footer'
 
+function App () {
   const [files, setFiles] = useState([])
   const { makeUploadRequest, makeDeleteRequest } = useUpload()
 
-  const revert = (token, successCallback, errorCallback) => {
+  const revert = useCallback((token, successCallback, errorCallback) => {
     makeDeleteRequest({
       token,
       successCallback,
       errorCallback
     })
-  }
+  }, [])
 
-  const process = (
+  const process = useCallback((
     fieldName,
     file,
     metadata,
@@ -46,24 +48,27 @@ function App () {
         abort()
       }
     }
-  }
+  }, [])
 
   return (
-    <div className='page'>
-      <div style={{ width: '80%', padding: '1%' }}>
-        <FilePond
-          files={files}
-          acceptedFileTypes='image/*'
-          onupdatefiles={setFiles}
-          allowMultiple
-          server={{ process, revert }}
-          name='file'
-          labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
-        />
+    <>
+      <Header />
+      <div className='page'>
+        <div style={{ width: '80%', padding: '1%' }}>
+          <FilePond
+            files={files}
+            acceptedFileTypes='image/*'
+            onupdatefiles={setFiles}
+            server={{ process, revert }}
+            name='file'
+            labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
+          />
+        </div>
+        <Samples />
+        <CelebrityList />
       </div>
-      <Samples />
-      <CelebrityList />
-    </div>
+      <Footer />
+    </>
   )
 }
 
