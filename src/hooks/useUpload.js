@@ -10,7 +10,7 @@ const baseUrl = `https://api.cloudinary.com/v1_1/${cloudName}`
 
 // This hook is used along the filepond dependency (the dropzone)
 export const useUpload = () => {
-  const { setCelebrities } = useContext(CelebritiesContext)
+  const { setCelebrities, setLoading, setError } = useContext(CelebritiesContext)
 
   const makeUploadRequest = useCallback(({
     file,
@@ -19,6 +19,8 @@ export const useUpload = () => {
     successCallback,
     errorCallback
   }) => {
+    setLoading(true)
+
     const url = `${baseUrl}/image/upload`
 
     const formData = new FormData()
@@ -38,6 +40,7 @@ export const useUpload = () => {
     request.open('POST', url)
 
     request.upload.onprogress = (e) => {
+      setError(null)
       progressCallback(e.lengthComputable, e.loaded, e.total)
     }
 
@@ -50,6 +53,8 @@ export const useUpload = () => {
           width: originalWidth,
           height: originalHeight
         } = JSON.parse(request.response)
+
+        setLoading(false)
 
         setCelebrities([])
 
@@ -72,7 +77,13 @@ export const useUpload = () => {
         // si non reconoce ningunha cara estaria ben setear un error
 
         successCallback(deleteToken)
+      } else if (request.status === 420) {
+        setLoading(false)
+        setError('Run out of tries (50/50)')
+        errorCallback(request.responseText)
       } else {
+        setLoading(false)
+        setError(null)
         errorCallback(request.responseText)
       }
     }

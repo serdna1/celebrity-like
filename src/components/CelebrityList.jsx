@@ -5,11 +5,14 @@ import { CelebrityCard } from './CelebrityCard'
 import './CelebrityList.css'
 
 export const CelebrityList = () => {
-  const { celebrities } = useContext(CelebritiesContext)
+  const { celebrities, loading, error } = useContext(CelebritiesContext)
 
   return (
     <>
-      {(celebrities.length > 0) && <h2>Results:</h2>}
+      <h2>Results:</h2>
+      {(celebrities.length <= 0) && !loading && !error && <p className='error'>No faces</p>}
+      {loading && <p className='loading'>Loading...</p>}
+      {error && <p className='error'>{error}</p>}
       <div className='cards'>
         {
         celebrities.map(celebrity => (

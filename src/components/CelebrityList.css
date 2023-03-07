@@ -12,3 +12,14 @@ h2 {
     /* width: 80%; */
     /* background-color: antiquewhite; */
 }
+
+.error {
+    margin-top: 16px;
+    color: rgb(206, 42, 42);
+    font-size: 1.25em;
+}
+
+.loading {
+    margin-top: 16px;
+    font-size: 1.25em;
+}
