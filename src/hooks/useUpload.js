@@ -58,7 +58,8 @@ export const useUpload = () => {
 
         setCelebrities([])
 
-        const celebrityFaces = info.detection.aws_rek_face.data.celebrity_faces // recognized faces
+        let celebrityFaces = info.detection.aws_rek_face.data.celebrity_faces // recognized faces
+        celebrityFaces = (celebrityFaces.length <= 0) ? info.detection.aws_rek_face.data.unrecognized_faces : celebrityFaces
 
         celebrityFaces.forEach(face => {
           const name = face.name
@@ -73,8 +74,6 @@ export const useUpload = () => {
               [...oldCelebrity, { celebrityURL, moreDataURL, ...newCelebrityDetails }]
             )))
         })
-
-        // si non reconoce ningunha cara estaria ben setear un error
 
         successCallback(deleteToken)
       } else if (request.status === 420) {

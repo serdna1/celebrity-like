@@ -5,7 +5,11 @@ export const CelebrityCard = ({ url, moreDataURL, occupation }) => {
     <a href={'https://' + moreDataURL}>
       <div className='card'>
         <img src={url} alt='gjkghk' />
-        <p>{occupation[0]}</p>
+        {
+          occupation
+            ? <p>{occupation[0]}</p>
+            : <p>No eres una celebridad, no eres nadie</p>
+        }
       </div>
     </a>
   )
