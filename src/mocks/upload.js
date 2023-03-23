@@ -1,7 +1,7 @@
-const upload = [
+export const upload = [
   {
     asset_id: 'd53887f356cb972dd3e3fe171ff0eec7',
-    public_id: 'wch4aiqnmv0jxplf39wr',
+    public_id: 'rollings',
     version: 1678111131,
     version_id: '9db6c9233636aa6a3e0b0ea5ffc57400',
     signature: 'd1ddf3c3e94118745ed2a08ff8c81167dc7c2de9',

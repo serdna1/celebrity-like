@@ -8,7 +8,7 @@ export const CelebrityCard = ({ url, moreDataURL, occupation }) => {
         {
           occupation
             ? <p>{occupation[0]}</p>
-            : <p>No eres una celebridad, no eres nadie</p>
+            : <p>No famoso</p>
         }
       </div>
     </a>

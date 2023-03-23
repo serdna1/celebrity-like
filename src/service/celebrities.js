@@ -1,9 +1,9 @@
 const API_NINJAS_PREFIX = 'https://api.api-ninjas.com'
-const API_KEY = 'iRCHew8ByIiAHjS/FG4TyQ==x1GTx1YEOLm3QrHb'
+const API_KEY = 'bCyi6b4NmnflIgNN8Wby38wxfDP0gYSXN06VdVGS'
 
 export const searchCelebrity = async ({ name }) => {
   try {
-    console.log('name', name)
+    // console.log('name', name)
     const response = await fetch(`${API_NINJAS_PREFIX}/v1/celebrity?name=${name}`, {
       headers: {
         'X-Api-Key': API_KEY

@@ -77,7 +77,7 @@ export const makeTransformations = ({ publicId, originalWidth, originalHeight, b
           .delivery(format(webp()))
           .delivery(quality(autoLow()))
 
-  console.log('image transformed', imageOverlay.toURL())
+  // console.log('image transformed', imageOverlay.toURL())
 
   return imageOverlay.toURL()
 }
