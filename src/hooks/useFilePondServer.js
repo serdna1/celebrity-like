@@ -10,16 +10,20 @@ import { upload } from '../mocks/upload'
 const baseUrl = `https://api.cloudinary.com/v1_1/${cloudName}`
 
 // This hook is used along the filepond dependency (the dropzone)
-export const useUpload = () => {
+export const useFilePondServer = () => {
   const { setCelebrities, setLoading, setError } = useContext(CelebritiesContext)
 
-  const makeUploadRequest = useCallback(({
-    file,
+  const process = (
     fieldName,
-    progressCallback,
-    successCallback,
-    errorCallback
-  }) => {
+    file,
+    metadata,
+    load,
+    error,
+    progress,
+    abort,
+    transfer,
+    options
+  ) => {
     setLoading(true)
 
     const url = `${baseUrl}/image/upload`
@@ -29,10 +33,8 @@ export const useUpload = () => {
     formData.append('upload_preset', uploadPreset)
     // formData.append('api_key', apiKey)
     // formData.append('detection', 'aws_rek_face') // we need to set this param in order to get the recognized faces in the response
-
     // const timestamp = Date.now() / 1000
     // formData.append('timestamp', timestamp)
-
     // const stringToSign = `detection=aws_rek_face&timestamp=${timestamp}&upload_preset=asnf0nj6${apiSecret}`
     // const signature = Rusha.createHash().update(stringToSign).digest('hex')
     // formData.append('signature', signature)
@@ -42,7 +44,7 @@ export const useUpload = () => {
 
     request.upload.onprogress = (e) => {
       setError(null)
-      progressCallback(e.lengthComputable, e.loaded, e.total)
+      progress(e.lengthComputable, e.loaded, e.total)
     }
 
     request.onload = () => {
@@ -83,30 +85,34 @@ export const useUpload = () => {
             )))
         })
 
-        successCallback(deleteToken)
+        load(deleteToken)
       } else if (request.status === 420) {
         setLoading(false)
         setError('Run out of tries (50/50)')
-        errorCallback(request.responseText)
+        error(request.responseText)
       } else {
         setLoading(false)
         setError(null)
-        errorCallback(request.responseText)
+        error(request.responseText)
       }
     }
 
     request.send(formData)
 
-    return () => {
-      request.abort()
-    }
-  }, [])
+    return {
+      abort: () => {
+        request.abort()
 
-  const makeDeleteRequest = useCallback(({
-    token,
-    successCallback,
-    errorCallback
-  }) => {
+        abort()
+      }
+    }
+  }
+
+  const revert = (
+    uniqueFileId,
+    load,
+    error
+  ) => {
     const url = `${baseUrl}/delete_by_token`
 
     const request = new XMLHttpRequest()
@@ -116,16 +122,17 @@ export const useUpload = () => {
 
     request.onload = () => {
       if (request.status >= 200 && request.status < 300) {
-        successCallback()
+        load()
       } else {
-        errorCallback(request.responseText)
+        error(request.responseText)
       }
     }
-    request.send(JSON.stringify({ token }))
-  }, [])
+
+    request.send(JSON.stringify({ uniqueFileId }))
+  }
 
   return {
-    makeUploadRequest,
-    makeDeleteRequest
+    process,
+    revert
   }
 }
