@@ -1,9 +1,19 @@
+:root {
+    --primary: #141414;
+    --secondary: #494949;
+
+    --contours: #40ca24;
+
+    --font-primary: #fff;
+}
+
 .page {
     display: flex;
     flex-direction: column;
     align-items: center;
     max-width: 100%;
     min-height: 100vh;
-    background-color: aqua;
+    background-color: var(--primary);
+    color: var(--font-primary);
     padding-bottom: 32px;
 }

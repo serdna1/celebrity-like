@@ -1,8 +1,8 @@
 footer {
-    background-color: rgb(1, 10, 15);
+    background-color: var(--secondary);
     text-align: center;
     padding: 16px 0;
-    color: white;
+    color: var(--font-primary);
 }
 
 footer a:link,
@@ -10,6 +10,6 @@ footer a:active,
 footer a:hover,
 footer a:visited {
     text-decoration: underline;
-    color: aqua;
+    color: var(--contours);
 }
 
