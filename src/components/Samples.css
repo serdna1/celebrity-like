@@ -1,11 +1,18 @@
+.samplesContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 400px;
+}
+
 .samples {
     display: flex;
     flex-wrap: wrap;
-    /* align-items: center; */
     justify-content: center;
-    gap: 96px;
+    gap: 40px;
     margin-top: 24px;
-    padding: 0 96px;
 }
 
 .sample-button {

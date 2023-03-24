@@ -1,4 +1,4 @@
-import { useContext, useCallback } from 'react'
+import { useContext } from 'react'
 import Rusha from 'rusha'
 
 import { CelebritiesContext } from '../context/celebrities'

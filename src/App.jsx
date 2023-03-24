@@ -12,7 +12,6 @@ function App () {
       <Header />
       <div className='page'>
         <FilePondComponent />
-        <Samples />
         <CelebrityList />
       </div>
       <Footer />
