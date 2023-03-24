@@ -4,9 +4,3 @@
     flex-wrap: wrap;
     gap: 32px;
 }
-
-.filepond--root,
-.filepond--root .filepond--drop-label {
-    width: 400px;
-    height: 400px;
-}

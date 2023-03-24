@@ -1,6 +1,5 @@
-import { FilePondComponent } from './components/FilePondComponent'
+import { ActionArea } from './components/ActionArea'
 import { CelebrityList } from './components/CelebrityList'
-import { Samples } from './components/Samples'
 import { Header } from './components/Header'
 import { Footer } from './components/Footer'
 
@@ -11,7 +10,7 @@ function App () {
     <>
       <Header />
       <div className='page'>
-        <FilePondComponent />
+        <ActionArea />
         <CelebrityList />
       </div>
       <Footer />
