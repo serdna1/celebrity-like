@@ -1,15 +1,45 @@
+import { useContext } from 'react'
+import { FacesContext } from '../context/faces'
+
 import './Result.css'
 
 export const Result = () => {
+  const { url } = useContext(FacesContext)
+
   return (
     <section className='result'>
       <div className='resultImageContainer'>
         <img
-        //   src='https://res.cloudinary.com/dze60m7yr/image/upload/v1679542912/rollings.jpg'
-          src='https://res.cloudinary.com/dze60m7yr/image/upload/v1678168301/bhjrp2jzdrkpis8bipob.jpg'
-          alt='Result Image with the contours and the data about the faces'
+          src={url}
+          alt='Optimized uploaded image'
         />
       </div>
     </section>
   )
 }
+
+// import { useContext } from 'react'
+// import { FacesContext } from '../context/faces'
+// import { CelebrityCard } from './CelebrityCard'
+
+// import './CelebrityList.css'
+
+// export const CelebrityList = () => {
+//   const { celebrities, loading, error } = useContext(FacesContext)
+
+//   return (
+//     <>
+//       <h2>Results:</h2>
+//       {(celebrities.length <= 0) && !loading && !error && <p className='error'>No faces</p>}
+//       {loading && <p className='loading'>Loading...</p>}
+//       {error && <p className='error'>{error}</p>}
+//       <div className='cards'>
+//         {
+//         celebrities.map(celebrity => (
+//           <CelebrityCard key={celebrity.celebrityURL} moreDataURL={celebrity.moreDataURL} url={celebrity.celebrityURL} occupation={celebrity.occupation} />
+//         ))
+//       }
+//       </div>
+//     </>
+//   )
+// }

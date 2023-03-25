@@ -4,7 +4,7 @@ import Rusha from 'rusha'
 import { FacesContext } from '../context/faces'
 import { apiKey, cloudName, uploadPreset, apiSecret } from '../cloudinary/cloudinaryConfig'
 import { searchCelebrity } from '../service/celebrities'
-import { makeTransformations, optimizeImage } from '../service/cloudinary'
+import { optimizeImage } from '../service/cloudinary'
 import { upload } from '../mocks/upload'
 
 const baseUrl = `https://api.cloudinary.com/v1_1/${cloudName}`
