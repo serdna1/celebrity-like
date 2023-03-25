@@ -1,0 +1,25 @@
+h2 {
+    margin-top: 96px;
+}
+
+.cards {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 32px;
+    padding: 0 96px;
+    /* width: 80%; */
+    /* background-color: antiquewhite; */
+}
+
+.error {
+    margin-top: 16px;
+    color: rgb(206, 42, 42);
+    font-size: 1.25em;
+}
+
+.loading {
+    margin-top: 16px;
+    font-size: 1.25em;
+}

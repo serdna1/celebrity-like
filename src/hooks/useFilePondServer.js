@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import Rusha from 'rusha'
 
-import { CelebritiesContext } from '../context/celebrities'
+import { FacesContext } from '../context/faces'
 import { apiKey, cloudName, uploadPreset, apiSecret } from '../cloudinary/cloudinaryConfig'
 import { searchCelebrity } from '../service/celebrities'
 import { makeTransformations } from '../service/cloudinary'
@@ -11,7 +11,7 @@ const baseUrl = `https://api.cloudinary.com/v1_1/${cloudName}`
 
 // This hook is used along the filepond dependency (the dropzone)
 export const useFilePondServer = () => {
-  const { setCelebrities, setLoading, setError } = useContext(CelebritiesContext)
+  const { setUrl, setFaces, setLoading, setError } = useContext(FacesContext)
 
   const process = (
     fieldName,
@@ -61,28 +61,33 @@ export const useFilePondServer = () => {
 
         setLoading(false)
 
-        setCelebrities([])
+        setFaces([])
 
-        let celebrityFaces = info.detection.aws_rek_face.data.celebrity_faces // recognized faces
-        celebrityFaces = (celebrityFaces.length <= 0) ? info.detection.aws_rek_face.data.unrecognized_faces : celebrityFaces
+        // let celebrityFaces = info.detection.aws_rek_face.data.celebrity_faces // recognized faces
+        // celebrityFaces = (celebrityFaces.length <= 0) ? info.detection.aws_rek_face.data.unrecognized_faces : celebrityFaces
+        const data = info.detection.aws_rek_face.data
+        const faces = data.celebrity_faces.concat(data.unrecognized_faces)
 
         // Aqui habria que poner los rectangulos sobre las caras
-        celebrityFaces.forEach(face => {
+        faces.forEach(face => {
           const name = face.name
           const emotionType = face.face.emotions[0].type // emotions are already sorted by confidence
           const boundingBox = face.face.bounding_box
-          const celebrityURL = makeTransformations({ publicId, originalWidth, originalHeight, boundingBox, name, emotionType })
+          const url = makeTransformations({ publicId, originalWidth, originalHeight, boundingBox, name, emotionType })
 
-          const moreDataURL = face.urls[0]
+          // const moreDataURL = face.urls[0]
 
           // setCelebrities((oldCelebrities) => (
           //   [...oldCelebrities, { celebrityURL, moreDataURL }]
           // ))
 
           searchCelebrity({ name })
-            .then((newCelebrityDetails) => setCelebrities((oldCelebrity) => (
-              [...oldCelebrity, { celebrityURL, moreDataURL, ...newCelebrityDetails }]
-            )))
+            .then((celebrityDetails) => {
+              setUrl(url)
+              setFaces((oldFaces) => (
+                [...oldFaces, { name, boundingBox, emotionType, ...celebrityDetails }]
+              ))
+            })
         })
 
         load(deleteToken)

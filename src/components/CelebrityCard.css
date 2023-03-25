@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+a:link,
+a:active,
+a:hover,
+a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* margin: 0 32px; */
+    border: 1px solid black;
+    width: fit-content;
+    border-radius: 8px;
+    background-color: aliceblue;
+}
+
+.card img {
+    border-radius: 8px 8px 0 0;
+}
+
+.card p {
+    padding: 8px;
+    font-size: 2em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
