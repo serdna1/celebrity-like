@@ -1,5 +1,5 @@
 import { ActionArea } from './components/ActionArea'
-import { CelebrityList } from './components/CelebrityList'
+import { Result } from './components/Result'
 import { Header } from './components/Header'
 import { Footer } from './components/Footer'
 
@@ -11,7 +11,7 @@ function App () {
       <Header />
       <div className='page'>
         <ActionArea />
-        <CelebrityList />
+        <Result />
       </div>
       <Footer />
     </>
