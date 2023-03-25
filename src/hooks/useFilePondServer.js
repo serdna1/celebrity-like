@@ -69,7 +69,7 @@ export const useFilePondServer = () => {
         const faces = data.celebrity_faces.concat(data.unrecognized_faces)
 
         // Aqui habria que poner los rectangulos sobre las caras
-        faces.forEach(face => {
+        faces.forEach((face, i) => {
           const name = face.name
           const emotionType = face.face.emotions[0].type // emotions are already sorted by confidence
           const boundingBox = face.face.bounding_box
@@ -77,17 +77,18 @@ export const useFilePondServer = () => {
 
           // const moreDataURL = face.urls[0]
 
-          // setCelebrities((oldCelebrities) => (
-          //   [...oldCelebrities, { celebrityURL, moreDataURL }]
-          // ))
+          setUrl(url)
+          setFaces((oldFaces) => (
+            [...oldFaces, { key: publicId + i, name, boundingBox, emotionType }]
+          ))
 
-          searchCelebrity({ name })
-            .then((celebrityDetails) => {
-              setUrl(url)
-              setFaces((oldFaces) => (
-                [...oldFaces, { name, boundingBox, emotionType, ...celebrityDetails }]
-              ))
-            })
+          // searchCelebrity({ name })
+          //   .then((celebrityDetails) => {
+          //     setUrl(url)
+          //     setFaces((oldFaces) => (
+          //       [...oldFaces, { key: publicId + i, name, boundingBox, emotionType, ...celebrityDetails }]
+          //     ))
+          //   })
         })
 
         load(deleteToken)

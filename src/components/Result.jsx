@@ -1,5 +1,7 @@
 import { useContext } from 'react'
+
 import { FacesContext } from '../context/faces'
+import { Faces } from './Faces'
 
 import './Result.css'
 
@@ -9,10 +11,13 @@ export const Result = () => {
   return (
     <section className='result'>
       <div className='resultImageContainer'>
-        <img
-          src={url}
-          alt='Optimized uploaded image'
-        />
+        <div className='imageWrapper'>
+          <img
+            src={url}
+            alt='Optimized uploaded image'
+          />
+          <Faces />
+        </div>
       </div>
     </section>
   )

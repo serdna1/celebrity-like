@@ -1,0 +1,4 @@
+.contour {
+    position: absolute;
+    border: 1px solid var(--contours);
+}
