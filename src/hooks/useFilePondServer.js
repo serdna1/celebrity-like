@@ -4,7 +4,7 @@ import Rusha from 'rusha'
 import { FacesContext } from '../context/faces'
 import { apiKey, cloudName, uploadPreset, apiSecret } from '../cloudinary/cloudinaryConfig'
 import { searchCelebrity } from '../service/celebrities'
-import { makeTransformations } from '../service/cloudinary'
+import { makeTransformations, optimizeImage } from '../service/cloudinary'
 import { upload } from '../mocks/upload'
 
 const baseUrl = `https://api.cloudinary.com/v1_1/${cloudName}`
@@ -73,7 +73,7 @@ export const useFilePondServer = () => {
           const name = face.name
           const emotionType = face.face.emotions[0].type // emotions are already sorted by confidence
           const boundingBox = face.face.bounding_box
-          const url = makeTransformations({ publicId, originalWidth, originalHeight, boundingBox, name, emotionType })
+          const url = optimizeImage({ publicId })
 
           // const moreDataURL = face.urls[0]
 
