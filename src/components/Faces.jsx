@@ -38,7 +38,7 @@ export const Faces = () => {
                       height: `${face.boundingBox.height * 100}%`,
                       left: `${face.boundingBox.left * 100}%`,
                       top: `${face.boundingBox.top * 100}%`,
-                      borderColor: face.name ? 'var(--contours-primary)' : 'var(--contours-secondary)'
+                      borderColor: face.isCelebrity ? 'var(--contours-primary)' : 'var(--contours-secondary)'
                     }
                   }
             onMouseEnter={() => handleOnMouseEnter(i)}
@@ -54,7 +54,7 @@ export const Faces = () => {
                       }
                     }
             >
-              <p>Name: {face.name ? face.name : 'not famous'}</p>
+              <p>Name: {face.isCelebrity ? face.name : 'not famous'}</p>
               <p>Emotion: {face.emotionType}</p>
               {/* Aqui la data del famoso (si lo es) */}
             </article>

@@ -66,21 +66,21 @@ export const useFilePondServer = () => {
 
         // let celebrityFaces = info.detection.aws_rek_face.data.celebrity_faces // recognized faces
         // celebrityFaces = (celebrityFaces.length <= 0) ? info.detection.aws_rek_face.data.unrecognized_faces : celebrityFaces
-        const data = info.detection.aws_rek_face.data
-        const faces = data.celebrity_faces.concat(data.unrecognized_faces)
+        const celebrityFaces = info.detection.aws_rek_face.data.celebrity_faces
+        const unrecognizedFaces = info.detection.aws_rek_face.data.unrecognized_faces
 
-        // Aqui habria que poner los rectangulos sobre las caras
-        faces.forEach((face, i) => {
+        celebrityFaces.forEach((face, i) => {
+          const isCelebrity = true
           const name = face.name
-          const emotionType = face.face.emotions[0].type // emotions are already sorted by confidence
           const boundingBox = face.face.bounding_box
+          const emotionType = face.face.emotions[0].type // emotions are already sorted by confidence
           const url = optimizeImage({ publicId })
 
           // const moreDataURL = face.urls[0]
 
           setUrl(url)
           setFaces((oldFaces) => (
-            [...oldFaces, { key: publicId + i, name, boundingBox, emotionType }]
+            [...oldFaces, { key: publicId + i, isCelebrity, name, boundingBox, emotionType }]
           ))
 
           // searchCelebrity({ name })
@@ -90,6 +90,18 @@ export const useFilePondServer = () => {
           //       [...oldFaces, { key: publicId + i, name, boundingBox, emotionType, ...celebrityDetails }]
           //     ))
           //   })
+        })
+
+        unrecognizedFaces.forEach((face, i) => {
+          const isCelebrity = false
+          const boundingBox = face.bounding_box
+          const emotionType = face.emotions[0].type // emotions are already sorted by confidence
+          const url = optimizeImage({ publicId })
+
+          setUrl(url)
+          setFaces((oldFaces) => (
+            [...oldFaces, { key: publicId + i, isCelebrity, boundingBox, emotionType }]
+          ))
         })
 
         load(deleteToken)

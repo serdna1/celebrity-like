@@ -28,7 +28,15 @@ export const rihannaAwkward = {
             urls: ['www.wikidata.org/wiki/Q1360389'],
             name: 'Fredrik Jacobson',
             id: '3ri9Ej2y',
-            face: { bounding_box: { width: 0.2916772663593292, height: 0.609760582447052, left: 0.1636158972978592, top: 0.1503729224205017 }, confidence: 99.99189758300781, landmarks: [{ type: 'nose', x: 0.31138062477111816, y: 0.47632715106010437 }, { type: 'eyeRight', x: 0.3706313371658325, y: 0.3819742798805237 }, { type: 'eyeLeft', x: 0.23687687516212463, y: 0.36603492498397827 }, { type: 'mouthLeft', x: 0.2383134514093399, y: 0.5613319277763367 }, { type: 'mouthRight', x: 0.34980443120002747, y: 0.5742665529251099 }], pose: { roll: 4.9846673011779785, yaw: 7.834975242614746, pitch: 3.6748111248016357 }, quality: { brightness: 80.68132019042969, sharpness: 86.86019134521484 }, emotions: [{ type: 'HAPPY', confidence: 99.03263092041016 }, { type: 'SURPRISED', confidence: 0.23910263180732727 }, { type: 'ANGRY', confidence: 0.20612680912017822 }, { type: 'CONFUSED', confidence: 0.16016122698783875 }, { type: 'DISGUSTED', confidence: 0.13129642605781555 }, { type: 'CALM', confidence: 0.0867498591542244 }, { type: 'FEAR', confidence: 0.0805141031742096 }, { type: 'SAD', confidence: 0.06340693682432175 }], smile: { value: true, confidence: 99.54546356201172 } },
+            face: {
+              bounding_box: { width: 0.2916772663593292, height: 0.609760582447052, left: 0.1636158972978592, top: 0.1503729224205017 },
+              confidence: 99.99189758300781,
+              landmarks: [{ type: 'nose', x: 0.31138062477111816, y: 0.47632715106010437 }, { type: 'eyeRight', x: 0.3706313371658325, y: 0.3819742798805237 }, { type: 'eyeLeft', x: 0.23687687516212463, y: 0.36603492498397827 }, { type: 'mouthLeft', x: 0.2383134514093399, y: 0.5613319277763367 }, { type: 'mouthRight', x: 0.34980443120002747, y: 0.5742665529251099 }],
+              pose: { roll: 4.9846673011779785, yaw: 7.834975242614746, pitch: 3.6748111248016357 },
+              quality: { brightness: 80.68132019042969, sharpness: 86.86019134521484 },
+              emotions: [{ type: 'HAPPY', confidence: 99.03263092041016 }, { type: 'SURPRISED', confidence: 0.23910263180732727 }, { type: 'ANGRY', confidence: 0.20612680912017822 }, { type: 'CONFUSED', confidence: 0.16016122698783875 }, { type: 'DISGUSTED', confidence: 0.13129642605781555 }, { type: 'CALM', confidence: 0.0867498591542244 }, { type: 'FEAR', confidence: 0.0805141031742096 }, { type: 'SAD', confidence: 0.06340693682432175 }],
+              smile: { value: true, confidence: 99.54546356201172 }
+            },
             match_confidence: 99.61599731445312,
             known_gender: { type: 'Male' }
           },
@@ -36,7 +44,15 @@ export const rihannaAwkward = {
             urls: ['www.wikidata.org/wiki/Q36844', 'www.imdb.com/name/nm1982597'],
             name: 'Rihanna',
             id: 'XT9IS5k',
-            face: { bounding_box: { width: 0.19303879141807556, height: 0.41716498136520386, left: 0.5371786952018738, top: 0.28862425684928894 }, confidence: 99.99351501464844, landmarks: [{ type: 'nose', x: 0.6792219877243042, y: 0.5305649638175964 }, { type: 'eyeRight', x: 0.6889832019805908, y: 0.4556558132171631 }, { type: 'eyeLeft', x: 0.6018598079681396, y: 0.46451202034950256 }, { type: 'mouthLeft', x: 0.6139501333236694, y: 0.6058672666549683 }, { type: 'mouthRight', x: 0.6861889362335205, y: 0.5972251296043396 }], pose: { roll: -1.8395973443984985, yaw: 24.54305076599121, pitch: 0.09741350263357162 }, quality: { brightness: 77.62422943115234, sharpness: 78.64350128173828 }, emotions: [{ type: 'CALM', confidence: 24.30156898498535 }, { type: 'CONFUSED', confidence: 23.167205810546875 }, { type: 'FEAR', confidence: 17.54683494567871 }, { type: 'DISGUSTED', confidence: 14.20035171508789 }, { type: 'ANGRY', confidence: 9.092907905578613 }, { type: 'SURPRISED', confidence: 8.47956657409668 }, { type: 'SAD', confidence: 1.8172913789749146 }, { type: 'HAPPY', confidence: 1.394277811050415 }], smile: { value: false, confidence: 96.17671966552734 } },
+            face: {
+              bounding_box: { width: 0.19303879141807556, height: 0.41716498136520386, left: 0.5371786952018738, top: 0.28862425684928894 },
+              confidence: 99.99351501464844,
+              landmarks: [{ type: 'nose', x: 0.6792219877243042, y: 0.5305649638175964 }, { type: 'eyeRight', x: 0.6889832019805908, y: 0.4556558132171631 }, { type: 'eyeLeft', x: 0.6018598079681396, y: 0.46451202034950256 }, { type: 'mouthLeft', x: 0.6139501333236694, y: 0.6058672666549683 }, { type: 'mouthRight', x: 0.6861889362335205, y: 0.5972251296043396 }],
+              pose: { roll: -1.8395973443984985, yaw: 24.54305076599121, pitch: 0.09741350263357162 },
+              quality: { brightness: 77.62422943115234, sharpness: 78.64350128173828 },
+              emotions: [{ type: 'CALM', confidence: 24.30156898498535 }, { type: 'CONFUSED', confidence: 23.167205810546875 }, { type: 'FEAR', confidence: 17.54683494567871 }, { type: 'DISGUSTED', confidence: 14.20035171508789 }, { type: 'ANGRY', confidence: 9.092907905578613 }, { type: 'SURPRISED', confidence: 8.47956657409668 }, { type: 'SAD', confidence: 1.8172913789749146 }, { type: 'HAPPY', confidence: 1.394277811050415 }],
+              smile: { value: false, confidence: 96.17671966552734 }
+            },
             match_confidence: 93.5897216796875,
             known_gender: { type: 'Female' }
           }],
