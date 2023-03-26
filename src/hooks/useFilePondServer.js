@@ -70,6 +70,7 @@ export const useFilePondServer = () => {
         const unrecognizedFaces = info.detection.aws_rek_face.data.unrecognized_faces
 
         celebrityFaces.forEach((face, i) => {
+          const key = publicId + i
           const isCelebrity = true
           const name = face.name
           const boundingBox = face.face.bounding_box
@@ -80,7 +81,7 @@ export const useFilePondServer = () => {
 
           setUrl(url)
           setFaces((oldFaces) => (
-            [...oldFaces, { key: publicId + i, isCelebrity, name, boundingBox, emotionType }]
+            [...oldFaces, { key, isCelebrity, name, boundingBox, emotionType }]
           ))
 
           // searchCelebrity({ name })
@@ -92,7 +93,10 @@ export const useFilePondServer = () => {
           //   })
         })
 
+        const celebrityFacesLength = celebrityFaces.length
+
         unrecognizedFaces.forEach((face, i) => {
+          const key = publicId + celebrityFacesLength + i
           const isCelebrity = false
           const boundingBox = face.bounding_box
           const emotionType = face.emotions[0].type // emotions are already sorted by confidence
@@ -100,7 +104,7 @@ export const useFilePondServer = () => {
 
           setUrl(url)
           setFaces((oldFaces) => (
-            [...oldFaces, { key: publicId + i, isCelebrity, boundingBox, emotionType }]
+            [...oldFaces, { key, isCelebrity, boundingBox, emotionType }]
           ))
         })
 
