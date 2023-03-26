@@ -2,7 +2,8 @@
     --primary: #141414;
     --secondary: #494949;
 
-    --contours: #40ca24;
+    --contours-primary: #40ca24;
+    --contours-secondary: #297eff;
 
     --font-primary: #fff;
 }

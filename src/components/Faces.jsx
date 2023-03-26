@@ -37,7 +37,8 @@ export const Faces = () => {
                       width: `${face.boundingBox.width * 100}%`,
                       height: `${face.boundingBox.height * 100}%`,
                       left: `${face.boundingBox.left * 100}%`,
-                      top: `${face.boundingBox.top * 100}%`
+                      top: `${face.boundingBox.top * 100}%`,
+                      borderColor: face.name ? 'var(--contours-primary)' : 'var(--contours-secondary)'
                     }
                   }
             onMouseEnter={() => handleOnMouseEnter(i)}

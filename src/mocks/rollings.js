@@ -1,26 +1,25 @@
-export const upload = [
-  {
-    asset_id: 'd53887f356cb972dd3e3fe171ff0eec7',
-    public_id: 'rollings',
-    version: 1678111131,
-    version_id: '9db6c9233636aa6a3e0b0ea5ffc57400',
-    signature: 'd1ddf3c3e94118745ed2a08ff8c81167dc7c2de9',
-    width: 382,
-    height: 300,
-    format: 'jpg',
-    resource_type: 'image',
-    created_at: '2023-03-06T13:58:51Z',
-    tags: [],
-    bytes: 14597,
-    type: 'upload',
-    etag: '46fe28b37239a9cb3d0a7a91761a5425',
-    placeholder: false,
-    url: 'http://res.cloudinary.com/dze60m7yr/image/upload/v1678111131/wch4aiqnmv0jxplf39wr.jpg',
-    secure_url: 'https://res.cloudinary.com/dze60m7yr/image/upload/v1678111131/wch4aiqnmv0jxplf39wr.jpg',
-    folder: '',
-    access_mode: 'public',
-    info: {
-      detection:
+export const rollings = {
+  asset_id: 'd53887f356cb972dd3e3fe171ff0eec7',
+  public_id: 'rollings',
+  version: 1678111131,
+  version_id: '9db6c9233636aa6a3e0b0ea5ffc57400',
+  signature: 'd1ddf3c3e94118745ed2a08ff8c81167dc7c2de9',
+  width: 382,
+  height: 300,
+  format: 'jpg',
+  resource_type: 'image',
+  created_at: '2023-03-06T13:58:51Z',
+  tags: [],
+  bytes: 14597,
+  type: 'upload',
+  etag: '46fe28b37239a9cb3d0a7a91761a5425',
+  placeholder: false,
+  url: 'http://res.cloudinary.com/dze60m7yr/image/upload/v1678111131/wch4aiqnmv0jxplf39wr.jpg',
+  secure_url: 'https://res.cloudinary.com/dze60m7yr/image/upload/v1678111131/wch4aiqnmv0jxplf39wr.jpg',
+  folder: '',
+  access_mode: 'public',
+  info: {
+    detection:
         {
           aws_rek_face:
             {
@@ -108,9 +107,8 @@ export const upload = [
               }
             }
         }
-    },
-    original_filename: 'rolling-stones',
-    api_key: '395366624821627',
-    delete_token: 'a584cd65c3aa9975ded2cfd8f12041e6b6c2718d0469386ddef2e376e8072e5b09aff7aa3f17e8a3480bb53af3b4fe452558391b88533c75cf268f845ea2a760c8965f12d8835822b0b08d6a2b0f0012a230fc07bc90733192824aba77b36118b9ecde79e60df342de4ef65cd95c887b82ff9d42c5a519e0f33038cd0c93a82c'
-  }
-]
+  },
+  original_filename: 'rolling-stones',
+  api_key: '395366624821627',
+  delete_token: 'a584cd65c3aa9975ded2cfd8f12041e6b6c2718d0469386ddef2e376e8072e5b09aff7aa3f17e8a3480bb53af3b4fe452558391b88533c75cf268f845ea2a760c8965f12d8835822b0b08d6a2b0f0012a230fc07bc90733192824aba77b36118b9ecde79e60df342de4ef65cd95c887b82ff9d42c5a519e0f33038cd0c93a82c'
+}

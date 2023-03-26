@@ -5,7 +5,7 @@ import { FacesContext } from '../context/faces'
 import { apiKey, cloudName, uploadPreset, apiSecret } from '../cloudinary/cloudinaryConfig'
 import { searchCelebrity } from '../service/celebrities'
 import { optimizeImage } from '../service/cloudinary'
-import { upload } from '../mocks/upload'
+import { rihannaAwkward, rollings } from '../mocks'
 
 const baseUrl = `https://api.cloudinary.com/v1_1/${cloudName}`
 
@@ -56,8 +56,9 @@ export const useFilePondServer = () => {
           width: originalWidth,
           height: originalHeight
         // } = JSON.parse(request.response)
-        } = upload[0]
-        // console.log(upload)
+        } = rihannaAwkward
+
+        console.log(request.response)
 
         setLoading(false)
 

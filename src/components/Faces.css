@@ -1,6 +1,6 @@
 .contour {
     position: absolute;
-    border: 1px solid var(--contours);
+    border: 1px solid var(--contours-primary);
 }
 
 .faceData {
