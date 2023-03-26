@@ -1,8 +1,10 @@
 import { Cloudinary } from '@cloudinary/url-gen'
 
+import { cloudName } from '../config/cloudinaryConfig'
+
 const cld = new Cloudinary({
   cloud: {
-    cloudName: 'dze60m7yr'
+    cloudName
   },
   url: {
     secure: true

@@ -2,8 +2,8 @@ import { useContext } from 'react'
 import Rusha from 'rusha'
 
 import { FacesContext } from '../context/faces'
-import { apiKey, cloudName, uploadPreset, apiSecret } from '../cloudinary/cloudinaryConfig'
-import { searchCelebrity } from '../service/celebrities'
+import { apiKey, cloudName, uploadPreset, apiSecret, folder } from '../config/cloudinaryConfig'
+import { searchCelebrity } from '../service/apiNinjasCelebrities'
 import { optimizeImage } from '../service/cloudinary'
 import { rihannaAwkward, rollings } from '../mocks'
 
@@ -30,12 +30,13 @@ export const useFilePondServer = () => {
 
     const formData = new FormData()
     formData.append(fieldName, file)
+    // formData.append('folder', folder)
     formData.append('upload_preset', uploadPreset)
     // formData.append('api_key', apiKey)
     // formData.append('detection', 'aws_rek_face') // we need to set this param in order to get the recognized faces in the response
     // const timestamp = Date.now() / 1000
     // formData.append('timestamp', timestamp)
-    // const stringToSign = `detection=aws_rek_face&timestamp=${timestamp}&upload_preset=asnf0nj6${apiSecret}`
+    // const stringToSign = `detection=aws_rek_face&folder=${folder}&timestamp=${timestamp}&upload_preset=asnf0nj6${apiSecret}`
     // const signature = Rusha.createHash().update(stringToSign).digest('hex')
     // formData.append('signature', signature)
 
