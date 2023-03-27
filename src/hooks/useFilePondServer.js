@@ -4,14 +4,13 @@ import Rusha from 'rusha'
 import { FacesContext } from '../context/faces'
 import { apiKey, cloudName, uploadPreset, apiSecret, folder } from '../config/cloudinaryConfig'
 import { searchCelebrity } from '../service/apiNinjasCelebrities'
-import { optimizeImage } from '../service/cloudinary'
-import { colbyTheOffice, rihannaAwkward, rollings } from '../mocks'
+import { colbyTheOffice, coolio, rihannaAwkward, rollings, selfieWithPedroPascal } from '../mocks'
 
 const baseUrl = `https://api.cloudinary.com/v1_1/${cloudName}`
 
 // This hook is used along the filepond dependency (the dropzone)
 export const useFilePondServer = () => {
-  const { setUrl, setFaces, setLoading, setError } = useContext(FacesContext)
+  const { setLoading, setError, refreshFaces } = useContext(FacesContext)
 
   const process = (
     fieldName,
@@ -56,58 +55,12 @@ export const useFilePondServer = () => {
           info,
           width: originalWidth,
           height: originalHeight
-        } = JSON.parse(request.response)
-        // } = colbyTheOffice
+        // } = JSON.parse(request.response)
+        } = selfieWithPedroPascal
 
         console.log(request.response)
 
-        setLoading(false)
-
-        setFaces([])
-
-        // let celebrityFaces = info.detection.aws_rek_face.data.celebrity_faces // recognized faces
-        // celebrityFaces = (celebrityFaces.length <= 0) ? info.detection.aws_rek_face.data.unrecognized_faces : celebrityFaces
-        const celebrityFaces = info.detection.aws_rek_face.data.celebrity_faces
-        const unrecognizedFaces = info.detection.aws_rek_face.data.unrecognized_faces
-
-        celebrityFaces.forEach((face, i) => {
-          const key = publicId + i
-          const isCelebrity = true
-          const name = face.name
-          const boundingBox = face.face.bounding_box
-          const emotionType = face.face.emotions[0].type // emotions are already sorted by confidence
-          const url = optimizeImage({ publicId })
-
-          // const moreDataURL = face.urls[0]
-
-          setUrl(url)
-          setFaces((oldFaces) => (
-            [...oldFaces, { key, isCelebrity, name, boundingBox, emotionType }]
-          ))
-
-          // searchCelebrity({ name })
-          //   .then((celebrityDetails) => {
-          //     setUrl(url)
-          //     setFaces((oldFaces) => (
-          //       [...oldFaces, { key: publicId + i, name, boundingBox, emotionType, ...celebrityDetails }]
-          //     ))
-          //   })
-        })
-
-        const celebrityFacesLength = celebrityFaces.length
-
-        unrecognizedFaces.forEach((face, i) => {
-          const key = publicId + celebrityFacesLength + i
-          const isCelebrity = false
-          const boundingBox = face.bounding_box
-          const emotionType = face.emotions[0].type // emotions are already sorted by confidence
-          const url = optimizeImage({ publicId })
-
-          setUrl(url)
-          setFaces((oldFaces) => (
-            [...oldFaces, { key, isCelebrity, boundingBox, emotionType }]
-          ))
-        })
+        refreshFaces({ publicId, info })
 
         load(deleteToken)
       } else if (request.status === 420) {
