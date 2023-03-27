@@ -1,6 +1,6 @@
 export const rihannaAwkward = {
   asset_id: 'b2032b83fe7c40558fe27e4501f33973',
-  public_id: 'celebrity-like/higcobs6x8ttuiwmckar',
+  public_id: 'celebrity-like/samples/rihannaAwkward',
   version: 1679861415,
   version_id: 'f612b67c636d4c0a54a1329c30f3aebc',
   signature: '6e988dd4d9b3d19ac5f13db86de423f199d2fecc',

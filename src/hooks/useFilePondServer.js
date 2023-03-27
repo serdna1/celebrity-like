@@ -5,7 +5,7 @@ import { FacesContext } from '../context/faces'
 import { apiKey, cloudName, uploadPreset, apiSecret, folder } from '../config/cloudinaryConfig'
 import { searchCelebrity } from '../service/apiNinjasCelebrities'
 import { optimizeImage } from '../service/cloudinary'
-import { rihannaAwkward, rollings } from '../mocks'
+import { colbyTheOffice, rihannaAwkward, rollings } from '../mocks'
 
 const baseUrl = `https://api.cloudinary.com/v1_1/${cloudName}`
 
@@ -30,15 +30,15 @@ export const useFilePondServer = () => {
 
     const formData = new FormData()
     formData.append(fieldName, file)
-    // formData.append('folder', folder)
+    formData.append('folder', folder)
     formData.append('upload_preset', uploadPreset)
-    // formData.append('api_key', apiKey)
-    // formData.append('detection', 'aws_rek_face') // we need to set this param in order to get the recognized faces in the response
-    // const timestamp = Date.now() / 1000
-    // formData.append('timestamp', timestamp)
-    // const stringToSign = `detection=aws_rek_face&folder=${folder}&timestamp=${timestamp}&upload_preset=asnf0nj6${apiSecret}`
-    // const signature = Rusha.createHash().update(stringToSign).digest('hex')
-    // formData.append('signature', signature)
+    formData.append('api_key', apiKey)
+    formData.append('detection', 'aws_rek_face') // we need to set this param in order to get the recognized faces in the response
+    const timestamp = Date.now() / 1000
+    formData.append('timestamp', timestamp)
+    const stringToSign = `detection=aws_rek_face&folder=${folder}&timestamp=${timestamp}&upload_preset=asnf0nj6${apiSecret}`
+    const signature = Rusha.createHash().update(stringToSign).digest('hex')
+    formData.append('signature', signature)
 
     const request = new XMLHttpRequest()
     request.open('POST', url)
@@ -56,8 +56,8 @@ export const useFilePondServer = () => {
           info,
           width: originalWidth,
           height: originalHeight
-        // } = JSON.parse(request.response)
-        } = rihannaAwkward
+        } = JSON.parse(request.response)
+        // } = colbyTheOffice
 
         console.log(request.response)
 
