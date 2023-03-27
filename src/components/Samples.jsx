@@ -7,10 +7,10 @@ export const Samples = () => {
     <section className='samplesContainer'>
       <h3>Or try one of this:</h3>
       <div className='samples'>
-        <Sample filename='rihanna.jpg' alt='Rihanna sample image' />
-        <Sample filename='donald-trump.webp' alt='Donald Trump sample image' />
-        <Sample filename='david-tennant.webp' alt='David Tennant sample image' />
-        <Sample filename='rolling-stones.jpg' alt='Rolling Stones sample image' />
+        <Sample filename='selfieWithPedroPascal.jpg' alt='A woman taking a selfie with a cover of Pedro Pascal in hte street (sample image)' />
+        <Sample filename='coolio.jpg' alt='A woman takes a selfie with the rapper Coolio (sample image)' />
+        <Sample filename='colby-theoffice.jpg' alt='A man takes a selfie while The Office is playing on background (sample image)' />
+        <Sample filename='rihannaAwkward.webp' alt='Rihanna and Fredrik Jacobson selfie (sample image)' />
       </div>
     </section>
   )
