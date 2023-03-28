@@ -4,3 +4,7 @@ header {
     background-color: var(--primary);
     color: var(--font-primary);
 }
+
+header h1 {
+    font-weight: 400;
+}

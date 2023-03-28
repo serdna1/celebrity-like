@@ -3,3 +3,7 @@
     width: 400px;
     height: 400px;
 }
+
+.filepond--root .filepond--credits {
+    opacity: 0.5;
+}
