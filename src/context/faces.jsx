@@ -11,8 +11,6 @@ export const FacesProvider = ({ children }) => {
   const [error, setError] = useState(null)
 
   const refreshFaces = ({ publicId, info }) => {
-    setLoading(false)
-
     setFaces([])
 
     const celebrityFaces = info.detection.aws_rek_face.data.celebrity_faces

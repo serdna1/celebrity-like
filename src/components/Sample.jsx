@@ -6,12 +6,17 @@ import { FacesContext } from '../context/faces'
 import './Sample.css'
 
 export const Sample = ({ publicId, alt, info }) => {
-  const { refreshFaces } = useContext(FacesContext)
+  const { refreshFaces, setLoading } = useContext(FacesContext)
+
+  const handleClick = () => {
+    setLoading(true)
+    refreshFaces({ publicId, info })
+  }
 
   return (
     <button
       className='sampleButton'
-      onClick={() => refreshFaces({ publicId, info })}
+      onClick={handleClick}
     >
       <div className='sample'>
         <img
