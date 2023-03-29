@@ -16,6 +16,10 @@
     border: 2px solid var(--contours-primary);
 }
 
+.error {
+    color: #c44e47;
+}
+
 .imageWrapper {
     position: relative;
     width: fit-content;

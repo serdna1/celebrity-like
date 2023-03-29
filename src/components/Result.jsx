@@ -6,18 +6,18 @@ import { Faces } from './Faces'
 import './Result.css'
 
 export const Result = () => {
-  const { url, setLoading, loading } = useContext(FacesContext)
+  const { url, setLoading, loading, error } = useContext(FacesContext)
   const resultImage = useRef(null)
 
   useEffect(() => {
-    const loaded = () => {
+    const onLoad = () => {
       setLoading(false)
     }
 
-    resultImage.current.addEventListener('load', loaded)
+    resultImage.current.addEventListener('load', onLoad)
 
     return () => {
-      resultImage.current.removeEventListener('load', loaded)
+      resultImage.current.removeEventListener('load', onLoad)
     }
   }, [resultImage])
 
@@ -25,6 +25,7 @@ export const Result = () => {
     <section className='result'>
       <div className='resultImageContainer'>
         {loading && <p className='loading'>Loading...</p>}
+        {error && <p className='error'>{error}</p>}
         <div
           className='imageWrapper'
           style={{ display: loading ? 'none' : 'block' }}

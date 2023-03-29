@@ -23,6 +23,7 @@ export const useFilePondServer = () => {
     transfer,
     options
   ) => {
+    setError(null)
     setLoading(true)
 
     const url = `${baseUrl}/image/upload`
@@ -43,7 +44,6 @@ export const useFilePondServer = () => {
     request.open('POST', url)
 
     request.upload.onprogress = (e) => {
-      setError(null)
       progress(e.lengthComputable, e.loaded, e.total)
     }
 
@@ -63,13 +63,9 @@ export const useFilePondServer = () => {
         refreshFaces({ publicId, info })
 
         load(deleteToken)
-      } else if (request.status === 420) {
-        setLoading(false)
-        setError('Run out of tries (50/50)')
-        error(request.responseText)
       } else {
         setLoading(false)
-        setError(null)
+        setError('Something was wrong')
         error(request.responseText)
       }
     }
