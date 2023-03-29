@@ -33,7 +33,7 @@ export const useFilePondServer = () => {
     formData.append('folder', folder)
     formData.append('upload_preset', uploadPreset)
     formData.append('api_key', apiKey)
-    formData.append('detection', 'aws_rek_face') // we need to set this param in order to get the recognized faces in the response
+    formData.append('detection', 'aws_rek_faca') // we need to set this param in order to get the recognized faces in the response
     const timestamp = Date.now() / 1000
     formData.append('timestamp', timestamp)
     const stringToSign = `detection=aws_rek_face&folder=${folder}&timestamp=${timestamp}&upload_preset=asnf0nj6${apiSecret}`
@@ -55,8 +55,8 @@ export const useFilePondServer = () => {
           info,
           width: originalWidth,
           height: originalHeight
-        // } = JSON.parse(request.response)
-        } = selfieWithPedroPascal
+        } = JSON.parse(request.response)
+        // } = selfieWithPedroPascal
 
         console.log(request.response)
 
