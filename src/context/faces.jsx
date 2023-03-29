@@ -28,14 +28,6 @@ export const FacesProvider = ({ children }) => {
       setFaces((oldFaces) => (
         [...oldFaces, { key, isCelebrity, name, boundingBox, emotionType }]
       ))
-
-      // searchCelebrity({ name })
-      //   .then((celebrityDetails) => {
-      //     setUrl(url)
-      //     setFaces((oldFaces) => (
-      //       [...oldFaces, { key: publicId + i, name, boundingBox, emotionType, ...celebrityDetails }]
-      //     ))
-      //   })
     })
 
     const celebrityFacesLength = celebrityFaces.length
@@ -57,9 +49,7 @@ export const FacesProvider = ({ children }) => {
   return (
     <FacesContext.Provider value={{
       url,
-      setUrl,
       faces,
-      setFaces,
       loading,
       setLoading,
       error,

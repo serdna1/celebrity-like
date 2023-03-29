@@ -3,8 +3,6 @@ import Rusha from 'rusha'
 
 import { FacesContext } from '../context/faces'
 import { apiKey, cloudName, uploadPreset, apiSecret, folder } from '../config/cloudinaryConfig'
-import { searchCelebrity } from '../service/apiNinjasCelebrities'
-import { colbyTheOffice, coolio, rihannaAwkward, rollings, selfieWithPedroPascal } from '../mocks'
 
 const baseUrl = `https://api.cloudinary.com/v1_1/${cloudName}`
 
@@ -33,7 +31,7 @@ export const useFilePondServer = () => {
     formData.append('folder', folder)
     formData.append('upload_preset', uploadPreset)
     formData.append('api_key', apiKey)
-    formData.append('detection', 'aws_rek_faca') // we need to set this param in order to get the recognized faces in the response
+    formData.append('detection', 'aws_rek_face') // we need to set this param in order to get the recognized faces in the response
     const timestamp = Date.now() / 1000
     formData.append('timestamp', timestamp)
     const stringToSign = `detection=aws_rek_face&folder=${folder}&timestamp=${timestamp}&upload_preset=asnf0nj6${apiSecret}`
@@ -52,13 +50,8 @@ export const useFilePondServer = () => {
         const {
           delete_token: deleteToken,
           public_id: publicId,
-          info,
-          width: originalWidth,
-          height: originalHeight
+          info
         } = JSON.parse(request.response)
-        // } = selfieWithPedroPascal
-
-        console.log(request.response)
 
         refreshFaces({ publicId, info })
 

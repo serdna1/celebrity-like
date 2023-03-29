@@ -5,20 +5,10 @@
 
 .faceData {
     position: absolute;
-    /* top: -100px; */
     left: 50%;
     transform: translateX(-50%);
     z-index: 9999;
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* gap: 0.5rem; */
     width: 200px;
-    /* height: 200px; */
     padding: 0.5rem;
     background-color: var(--secondary);
 }
-
-/* .faceData p {
-    display: block;
-    background-color: pink;
-} */

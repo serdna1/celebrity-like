@@ -4,7 +4,6 @@ const apiNinjasPrefix = 'https://api.api-ninjas.com'
 
 export const searchCelebrity = async ({ name }) => {
   try {
-    // console.log('name', name)
     const response = await fetch(`${apiNinjasPrefix}/v1/celebrity?name=${name}`, {
       headers: {
         'X-Api-Key': apiKey

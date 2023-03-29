@@ -4,9 +4,7 @@ import App from './App'
 import { FacesProvider } from './context/faces'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
   <FacesProvider>
     <App />
   </FacesProvider>
-  // </React.StrictMode>
 )

@@ -7,7 +7,6 @@ import './Faces.css'
 export const Faces = () => {
   const { faces } = useContext(FacesContext)
   const [displayArticle, setDisplayArticle] = useState({})
-  // const [coords, setCoords] = useState({})
 
   const handleOnMouseEnter = (i) => {
     setDisplayArticle(old => ({ ...old, [i]: true }))
@@ -17,16 +16,8 @@ export const Faces = () => {
     setDisplayArticle(old => ({ ...old, [i]: false }))
   }
 
-  // const handleOnMouseOver = (event) => {
-  //   setCoords({
-  //     x: event.clientX,
-  //     y: event.clientY
-  //   })
-  // }
-
   return (
     <>
-      {/* <p style={{ color: '#000' }}>x: {coords.x}, y: {coords.y}</p> */}
       {
         faces.map((face, i) => (
           <div
@@ -43,7 +34,6 @@ export const Faces = () => {
                   }
             onMouseEnter={() => handleOnMouseEnter(i)}
             onMouseLeave={() => handleOnMouseLeave(i)}
-            // onMouseMove={handleOnMouseOver}
           >
             <article
               className='faceData'
@@ -56,7 +46,6 @@ export const Faces = () => {
             >
               <p>Name: {face.isCelebrity ? face.name : 'not famous'}</p>
               <p>Emotion: {face.emotionType}</p>
-              {/* Aqui la data del famoso (si lo es) */}
             </article>
           </div>
         ))
