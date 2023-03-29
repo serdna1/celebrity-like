@@ -28,7 +28,7 @@ export const Result = () => {
         {error && <p className='error'>{error}</p>}
         <div
           className='imageWrapper'
-          style={{ display: loading || error ? 'none' : 'block' }}
+          style={{ display: !url || loading || error ? 'none' : 'block' }}
         >
           <img
             ref={resultImage}

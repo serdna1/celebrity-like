@@ -5,7 +5,7 @@ import { optimizeImage } from '../service/cloudinary'
 export const FacesContext = createContext()
 
 export const FacesProvider = ({ children }) => {
-  const [url, setUrl] = useState('')
+  const [url, setUrl] = useState(null)
   const [faces, setFaces] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
