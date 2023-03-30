@@ -23,7 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 
-src/mocks/celebrities.js
-src/mocks/danielRadcliffe.js
-src/mocks/leprechaun.js
-src/mocks/rollings.js
+src/mocks/dev
+
