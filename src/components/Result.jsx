@@ -23,19 +23,21 @@ export const Result = () => {
 
   return (
     <section className='result'>
-      <div className='resultImageContainer'>
-        {loading && <p>Loading...</p>}
-        {error && <p className='error'>{error}</p>}
-        <div
-          className='imageWrapper'
-          style={{ display: !url || loading || error ? 'none' : 'block' }}
-        >
-          <img
-            ref={resultImage}
-            src={url}
-            alt='Optimized uploaded image'
-          />
-          <Faces />
+      <div className='resultImageContainerWrapper'>
+        <div className='resultImageContainer'>
+          {loading && <p>Loading...</p>}
+          {error && <p className='error'>{error}</p>}
+          <div
+            className='imageWrapper'
+            style={{ display: !url || loading || error ? 'none' : 'block' }}
+          >
+            <img
+              ref={resultImage}
+              src={url}
+              alt='Optimized uploaded image'
+            />
+            <Faces />
+          </div>
         </div>
       </div>
     </section>
