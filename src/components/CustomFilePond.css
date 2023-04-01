@@ -7,3 +7,11 @@
 .filepond--root .filepond--credits {
     opacity: 0.5;
 }
+
+@media (max-width: 420px) {
+    .filepond--root,
+    .filepond--root .filepond--drop-label {
+        width: 350px;
+        height: 350px;
+    }
+}
