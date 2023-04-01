@@ -4,7 +4,7 @@
 }
 
 .resultImageContainerWrapper {
-    max-width: 800px;
+    max-width: 1000px;
     padding-inline: 8px;
     margin-inline: auto;
 }
@@ -14,7 +14,7 @@
     justify-content: center;
     align-items: center;
     height: 600px;
-    max-width: 800px;
+    max-width: 1000px;
     margin-inline: auto;
     box-sizing: content-box;
     border: 2px solid var(--contours-primary);
@@ -31,7 +31,7 @@
 
 .imageWrapper img {
     display: block;
-    max-width: 600px;
+    max-width: 1000px;
     max-height: 600px;
     width: 100%;
 }
