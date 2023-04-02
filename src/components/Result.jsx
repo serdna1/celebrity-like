@@ -13,7 +13,8 @@ export const Result = () => {
     loading,
     error,
     getFacesLength,
-    getCelebrityFacesLength
+    getCelebrityFacesLength,
+    resultSection
   } = useContext(FacesContext)
   const resultImage = useRef(null)
 
@@ -30,7 +31,7 @@ export const Result = () => {
   }, [resultImage])
 
   return (
-    <section className='result'>
+    <section className='result' ref={resultSection}>
       <div className='resultImageContainerWrapper'>
         <p style={{ marginBottom: '4px' }}>
           Faces detected: {getFacesLength()} ({getCelebrityFacesLength()} celebrities)

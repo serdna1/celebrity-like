@@ -8,7 +8,7 @@ const baseUrl = `https://api.cloudinary.com/v1_1/${cloudName}`
 
 // This hook is used along the filepond dependency (the dropzone)
 export const useFilePondServer = () => {
-  const { setLoading, setError, refreshFaces } = useContext(FacesContext)
+  const { setLoading, setError, refreshFaces, scrollToResult } = useContext(FacesContext)
 
   const process = (
     fieldName,
@@ -23,6 +23,7 @@ export const useFilePondServer = () => {
   ) => {
     setError(null)
     setLoading(true)
+    scrollToResult()
 
     const url = `${baseUrl}/image/upload`
 

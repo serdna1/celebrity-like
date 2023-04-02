@@ -6,11 +6,12 @@ import { FacesContext } from '../context/faces'
 import './Sample.css'
 
 export const Sample = ({ publicId, alt, info }) => {
-  const { refreshFaces, setLoading, setError } = useContext(FacesContext)
+  const { refreshFaces, setLoading, setError, scrollToResult } = useContext(FacesContext)
 
   const handleClick = () => {
     setError(null)
     setLoading(true)
+    scrollToResult()
     refreshFaces({ publicId, info })
   }
 

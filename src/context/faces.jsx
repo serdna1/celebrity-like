@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react'
+import { useState, createContext, useRef } from 'react'
 
 import { optimizeImage } from '../service/cloudinary'
 
@@ -9,6 +9,7 @@ export const FacesProvider = ({ children }) => {
   const [faces, setFaces] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
+  const resultSection = useRef(null)
 
   const refreshFaces = ({ publicId, info }) => {
     setFaces([])
@@ -50,6 +51,8 @@ export const FacesProvider = ({ children }) => {
 
   const getCelebrityFacesLength = () => faces.filter(face => face.isCelebrity).length
 
+  const scrollToResult = () => resultSection.current?.scrollIntoView({ behavior: 'smooth' })
+
   return (
     <FacesContext.Provider value={{
       url,
@@ -60,7 +63,9 @@ export const FacesProvider = ({ children }) => {
       setError,
       refreshFaces,
       getFacesLength,
-      getCelebrityFacesLength
+      getCelebrityFacesLength,
+      resultSection,
+      scrollToResult
     }}
     >
       {children}
