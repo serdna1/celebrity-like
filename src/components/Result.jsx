@@ -34,7 +34,7 @@ export const Result = () => {
     <section className='result' ref={resultSection}>
       <div className='resultImageContainerWrapper'>
         <p style={{ marginBottom: '4px' }}>
-          Faces detected: {getFacesLength()} ({getCelebrityFacesLength()} celebrities)
+          Faces detected: {loading ? 0 : getFacesLength()} ({loading ? 0 : getCelebrityFacesLength()} celebrities)
         </p>
         <div className='resultImageContainer'>
           {
