@@ -21,6 +21,12 @@
 
 }
 
+.loadingMessage {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
 .error {
     color: #c44e47;
 }

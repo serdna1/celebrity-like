@@ -1,5 +1,6 @@
 import { useRef, useEffect, useContext } from 'react'
 
+import { Loader } from './Loader'
 import { FacesContext } from '../context/faces'
 import { Faces } from './Faces'
 
@@ -25,7 +26,13 @@ export const Result = () => {
     <section className='result'>
       <div className='resultImageContainerWrapper'>
         <div className='resultImageContainer'>
-          {loading && <p>Loading...</p>}
+          {
+            loading &&
+              <div className='loadingMessage'>
+                <p>Loading</p>
+                <Loader />
+              </div>
+          }
           {error && <p className='error'>{error}</p>}
           <div
             className='imageWrapper'
