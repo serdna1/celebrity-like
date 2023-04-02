@@ -7,7 +7,14 @@ import { Faces } from './Faces'
 import './Result.css'
 
 export const Result = () => {
-  const { url, setLoading, loading, error } = useContext(FacesContext)
+  const {
+    url,
+    setLoading,
+    loading,
+    error,
+    getFacesLength,
+    getCelebrityFacesLength
+  } = useContext(FacesContext)
   const resultImage = useRef(null)
 
   useEffect(() => {
@@ -25,6 +32,9 @@ export const Result = () => {
   return (
     <section className='result'>
       <div className='resultImageContainerWrapper'>
+        <p style={{ marginBottom: '4px' }}>
+          Faces detected: {getFacesLength()} ({getCelebrityFacesLength()} celebrities)
+        </p>
         <div className='resultImageContainer'>
           {
             loading &&

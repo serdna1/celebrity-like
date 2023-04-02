@@ -46,6 +46,10 @@ export const FacesProvider = ({ children }) => {
     })
   }
 
+  const getFacesLength = () => faces.length
+
+  const getCelebrityFacesLength = () => faces.filter(face => face.isCelebrity).length
+
   return (
     <FacesContext.Provider value={{
       url,
@@ -54,7 +58,9 @@ export const FacesProvider = ({ children }) => {
       setLoading,
       error,
       setError,
-      refreshFaces
+      refreshFaces,
+      getFacesLength,
+      getCelebrityFacesLength
     }}
     >
       {children}
