@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useRef } from 'react'
 
 import { FacesContext } from '../context/faces'
 
@@ -7,6 +7,8 @@ import './Faces.css'
 export const Faces = () => {
   const { faces } = useContext(FacesContext)
   const [displayArticle, setDisplayArticle] = useState({})
+  const faceContourDivs = useRef([])
+  const faceDataArticles = useRef([])
 
   const handleOnMouseEnter = (i) => {
     setDisplayArticle(old => ({ ...old, [i]: true }))
@@ -16,11 +18,23 @@ export const Faces = () => {
     setDisplayArticle(old => ({ ...old, [i]: false }))
   }
 
+  const faceDataArticleStyles = (i) => {
+    const faceContourDivRect = faceContourDivs.current[i]?.getBoundingClientRect()
+    const faceDataArticleRect = faceDataArticles.current[i]?.getBoundingClientRect()
+    if ((!faceContourDivRect) || (!faceDataArticleRect)) return {}
+    const faceContourDivLeft = faceContourDivRect.left
+    const faceDataArticleWidth = faceDataArticleRect.width
+    const windowInnerWidth = window.innerWidth
+    if ((faceContourDivLeft + faceDataArticleWidth) > windowInnerWidth) return { right: 0 }
+    return {}
+  }
+
   return (
     <>
       {
         faces.map((face, i) => (
           <div
+            ref={el => { faceContourDivs.current[i] = el }}
             key={face.key}
             className='contour'
             style={
@@ -36,11 +50,13 @@ export const Faces = () => {
             onMouseLeave={() => handleOnMouseLeave(i)}
           >
             <article
+              ref={el => { faceDataArticles.current[i] = el }}
               className='faceData'
               style={
                       {
-                        display: displayArticle[i] ? 'block' : 'none',
-                        top: '105%'
+                        visibility: displayArticle[i] ? 'visible' : 'hidden',
+                        top: '105%',
+                        ...faceDataArticleStyles(i)
                       }
                     }
             >

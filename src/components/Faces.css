@@ -5,8 +5,6 @@
 
 .faceData {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
     z-index: 9999;
     width: 200px;
     padding: 0.5rem;
