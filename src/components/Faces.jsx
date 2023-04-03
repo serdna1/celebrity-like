@@ -55,7 +55,7 @@ export const Faces = () => {
               style={
                       {
                         visibility: displayArticle[i] ? 'visible' : 'hidden',
-                        top: '105%',
+                        top: 'calc(100% + 2px)',
                         ...faceDataArticleStyles(i)
                       }
                     }
