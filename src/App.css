@@ -25,4 +25,5 @@
     background-color: var(--primary);
     color: var(--font-primary);
     padding-bottom: 48px;
+    overflow: hidden;
 }
