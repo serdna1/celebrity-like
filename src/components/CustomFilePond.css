@@ -1,4 +1,11 @@
-.filepond--root,
+.filepond--root {
+    width: 400px;
+}
+
+.filepond--root[style] {
+    height: 400px !important;
+}
+
 .filepond--root .filepond--drop-label {
     width: 400px;
     height: 400px;
@@ -8,8 +15,21 @@
     opacity: 0.5;
 }
 
+.filepond--root .filepond--credits[style] {
+    transform: none !important;
+    top: calc(100% + 4px) !important;
+    margin-top: 0 !important;
+}
+
 @media (max-width: 420px) {
-    .filepond--root,
+    .filepond--root {
+        width: 350px;
+    }
+    
+    .filepond--root[style] {
+        height: 350px !important;
+    }
+    
     .filepond--root .filepond--drop-label {
         width: 350px;
         height: 350px;
