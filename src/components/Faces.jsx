@@ -25,8 +25,8 @@ export const Faces = () => {
     const faceContourDivLeft = faceContourDivRect.left
     const faceDataArticleWidth = faceDataArticleRect.width
     const windowInnerWidth = window.innerWidth
-    if ((faceContourDivLeft + faceDataArticleWidth) > windowInnerWidth) return { right: 0 }
-    return {}
+    if ((faceContourDivLeft + faceDataArticleWidth) > windowInnerWidth) return { right: '-1px' }
+    return { left: '-1px' }
   }
 
   return (

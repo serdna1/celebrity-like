@@ -29,15 +29,15 @@ export const useFilePondServer = () => {
 
     const formData = new FormData()
     formData.append(fieldName, file)
-    // formData.append('folder', folder)
-    formData.append('upload_preset', 'afpzm8lz')
-    // formData.append('api_key', apiKey)
-    // formData.append('detection', 'aws_rek_face') // we need to set this param in order to get the recognized faces in the response
-    // const timestamp = Date.now() / 1000
-    // formData.append('timestamp', timestamp)
-    // const stringToSign = `detection=aws_rek_face&folder=${folder}&timestamp=${timestamp}&upload_preset=asnf0nj6${apiSecret}`
-    // const signature = Rusha.createHash().update(stringToSign).digest('hex')
-    // formData.append('signature', signature)
+    formData.append('folder', folder)
+    formData.append('upload_preset', uploadPreset)
+    formData.append('api_key', apiKey)
+    formData.append('detection', 'aws_rek_face') // we need to set this param in order to get the recognized faces in the response
+    const timestamp = Date.now() / 1000
+    formData.append('timestamp', timestamp)
+    const stringToSign = `detection=aws_rek_face&folder=${folder}&timestamp=${timestamp}&upload_preset=asnf0nj6${apiSecret}`
+    const signature = Rusha.createHash().update(stringToSign).digest('hex')
+    formData.append('signature', signature)
 
     const request = new XMLHttpRequest()
     request.open('POST', url)
@@ -54,7 +54,7 @@ export const useFilePondServer = () => {
           info
         } = JSON.parse(request.response)
 
-        // refreshFaces({ publicId, info })
+        refreshFaces({ publicId, info })
 
         load(deleteToken)
       } else {
