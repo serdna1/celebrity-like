@@ -12,6 +12,9 @@ export const FacesProvider = ({ children }) => {
   const resultSection = useRef(null)
 
   const refreshFaces = ({ publicId, info }) => {
+    const url = optimizeImage({ publicId })
+    setUrl(url)
+
     setFaces([])
 
     const celebrityFaces = info.detection.aws_rek_face.data.celebrity_faces
@@ -23,9 +26,7 @@ export const FacesProvider = ({ children }) => {
       const name = face.name
       const boundingBox = face.face.bounding_box
       const emotionType = face.face.emotions[0].type // emotions are already sorted by confidence
-      const url = optimizeImage({ publicId })
 
-      setUrl(url)
       setFaces((oldFaces) => (
         [...oldFaces, { key, isCelebrity, name, boundingBox, emotionType }]
       ))
@@ -38,9 +39,7 @@ export const FacesProvider = ({ children }) => {
       const isCelebrity = false
       const boundingBox = face.bounding_box
       const emotionType = face.emotions[0].type // emotions are already sorted by confidence
-      const url = optimizeImage({ publicId })
 
-      setUrl(url)
       setFaces((oldFaces) => (
         [...oldFaces, { key, isCelebrity, boundingBox, emotionType }]
       ))
